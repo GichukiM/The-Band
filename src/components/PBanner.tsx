@@ -3,15 +3,17 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-const slides = [
-  { id: 1, image: '/Hero1-TheBand.jpg', alt: 'Featured Product 1' },
-  { id: 2, image: '/Hero2-TheBand.jpg', alt: 'Featured Product 2' },
-  { id: 3, image: '/Hero3-TheBand.jpg', alt: 'Featured Product 3' },
-  { id: 4, image: '/Hero4-TheBand.jpg', alt: 'Featured Product 4' },
-  { id: 5, image: '/Hero5-TheBand.jpg', alt: 'Featured Product 5' }
-];
+interface Slide {
+  id: number;
+  image: string;
+  alt: string;
+}
 
-const PBanner = () => {
+interface PBannerProps {
+  slides: Slide[];
+}
+
+const PBanner: React.FC<PBannerProps> = ({ slides }) => {
   return (
     <div className="w-full mx-auto">
       <Swiper
@@ -28,7 +30,7 @@ const PBanner = () => {
         ))}
       </Swiper>
     </div>
-  )
+  );
 }
 
-export default PBanner
+export default PBanner;

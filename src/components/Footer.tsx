@@ -1,26 +1,38 @@
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
 
-const Footer = () => {
+import { JSX } from "react";
+
+interface ContactInfo {
+  email: string;
+  phone: string;
+  address: string;
+}
+
+interface SocialLink {
+  id: number;
+  icon: JSX.Element;
+  href: string;
+}
+
+interface FooterProps {
+  companyInfo: string;
+  contactInfo: ContactInfo;
+  socialLinks: SocialLink[];
+}
+
+const Footer: React.FC<FooterProps> = ({ companyInfo, contactInfo, socialLinks }) => {
   return (
-    <div className="w-full bg-gray-900 text-white rounded-t-[45px]">
+    <div className="w-full bg-gray-900 text-white">
       {/* Newsletter Subscription */}
-      <div className="bg-gray-800 py-6 rounded-t-[45px] text-center mb-6">
+      <div className="bg-gray-800 py-6 text-center mb-6">
         <h3 className="text-xl font-semibold">Subscribe to Our Newsletter</h3>
-        <p className="text-sm text-gray-300">
-          Get updates on new products and special offers.
-        </p>
-        <div className="mt-4 flex flex-wrap justify-center">
+        <p className="text-sm text-gray-300">Get updates on new products and special offers.</p>
+        <div className="mt-4 flex-col gap-2 flex justify-center items-center">
           <input
             type="email"
             placeholder="Enter your email"
-            className="px-4 py-2 text-black rounded-l-md w-60"
+            className="px-4 py-2 text-white border border-white rounded-md w-60"
           />
-          <button className="bg-yellow-500 px-4 py-2 rounded-r-md hover:bg-yellow-600">
+          <button className="bg-yellow-500 px-4 py-2 rounded-md hover:bg-yellow-600">
             Subscribe
           </button>
         </div>
@@ -31,38 +43,26 @@ const Footer = () => {
         {/* Column 1: Company Info */}
         <div>
           <h4 className="text-lg font-semibold mb-3">Company</h4>
-          <p className="text-gray-300 text-sm">
-            Leading e-commerce platform providing top-quality products at the
-            best prices.
-          </p>
+          <p className="text-gray-300 text-sm">{companyInfo}</p>
         </div>
 
         {/* Column 2: Contact Details */}
         <div>
           <h4 className="text-lg font-semibold mb-3">Contact Us</h4>
-          <p className="text-gray-300 text-sm">Email: support@example.com</p>
-          <p className="text-gray-300 text-sm">Phone: +123 456 7890</p>
-          <p className="text-gray-300 text-sm">
-            Address: 123 Street, City, Country
-          </p>
+          <p className="text-gray-300 text-sm">Email: {contactInfo.email}</p>
+          <p className="text-gray-300 text-sm">Phone: {contactInfo.phone}</p>
+          <p className="text-gray-300 text-sm">Address: {contactInfo.address}</p>
         </div>
 
         {/* Column 3: Social Media Links */}
         <div>
           <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
-          <div className="flex flex-col md:flex-row gap-4">
-            <a href="#" className="text-gray-400 hover:text-white">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <FaInstagram />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <FaLinkedinIn />
-            </a>
+          <div className="flex flex-row gap-4">
+            {socialLinks.map((link) => (
+              <a key={link.id} href={link.href} className="text-gray-400 hover:text-white">
+                {link.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>

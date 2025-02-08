@@ -1,21 +1,10 @@
 import { useState } from "react";
-import { FaHeart, FaShareAlt, FaStar, FaRegStar } from "react-icons/fa";
-import { IoMdArrowDropdown } from "react-icons/io";
+import ProductCard from "./ProductCard";
+import FilterSection from "./Filters";
+import SortDropdown from "./Sorting";
+import Pagination from "./Pagination";
 
-// Define the Product type
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  rating: number;
-  category: string;
-  image: string;
-  description: string;
-  numberOfRatings: number; // Added number of ratings
-};
-
-// Actual product data as JSON
-const productsData: Product[] = [
+const allProducts = [
   {
     id: 1,
     name: "Smartphone X",
@@ -98,43 +87,7 @@ const productsData: Product[] = [
   },
 ];
 
-// Helper function to truncate description to 5 words
-const truncateDescription = (description: string): string => {
-  const words = description.split(" ");
-  return words.slice(0, 5).join(" ") + (words.length > 5 ? "..." : "");
-};
-
-// Helper function to render star ratings
-const renderStars = (rating: number) => {
-  const fullStars = Math.floor(rating);
-  const partialStar = rating - fullStars;
-  const stars = [];
-
-  for (let i = 1; i <= 5; i++) {
-    if (i <= fullStars) {
-      stars.push(<FaStar key={i} className="text-yellow-500" />);
-    } else if (i === fullStars + 1 && partialStar > 0) {
-      stars.push(
-        <div key={i} className="relative inline-block">
-          <FaRegStar className="text-yellow-500" />
-          <div
-            className="absolute top-0 left-0 overflow-hidden"
-            style={{ width: `${partialStar * 100}%` }}
-          >
-            <FaStar className="text-yellow-500" />
-          </div>
-        </div>
-      );
-    } else {
-      stars.push(<FaRegStar key={i} className="text-yellow-500" />);
-    }
-  }
-
-  return stars;
-};
-
 const ProductListing = () => {
-  const [products, setProducts] = useState<Product[]>(productsData);
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState<string[]>([]);
@@ -149,126 +102,45 @@ const ProductListing = () => {
     );
   };
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSort(e.target.value);
-  };
-
-  const filteredProducts = products.filter((p) =>
+  const filteredProducts = allProducts.filter((p) =>
     filter.length ? filter.includes(p.category) : true
   );
-
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sort === "price-asc") return a.price - b.price;
-    if (sort === "price-desc") return b.price - a.price;
-    return 0;
-  });
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = sortedProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
+  const sortedProducts = [...filteredProducts].sort((a, b) =>
+    sort === "price-asc"
+      ? a.price - b.price
+      : sort === "price-desc"
+      ? b.price - a.price
+      : 0
   );
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10">
-      {/* Product Grid */}
       <div className="flex-1">
-        {/* Filters and Sort Section */}
         <div className="flex flex-col sm:flex-row sm:justify-between text-base sm:text-2xl mb-4">
-          {/* Filters Section */}
-          <div className="min-w-60">
-            <p
-              onClick={() => setShowFilter(!showFilter)}
-              className="my-2 text-xl flex items-center cursor-pointer gap-2"
-            >
-              FILTERS
-              <IoMdArrowDropdown
-                className={`h-8 ${showFilter ? "rotate-180" : ""}`}
-              />
-            </p>
-
-            <div
-              className={`border border-gray-300 pl-5 py-5 mt-6 ${
-                showFilter ? "" : "hidden"
-              } block`}
-            >
-              <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-              <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-                {["Electronics", "Clothing", "Accessories"].map((category) => (
-                  <p key={category} className="flex gap-2">
-                    <input
-                      type="checkbox"
-                      className="flex gap-2"
-                      value={category}
-                      onChange={() => handleFilterChange(category)}
-                      checked={filter.includes(category)}
-                    />
-                    {category}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Sort by Price Dropdown */}
-          <select
-            onChange={handleSortChange}
-            className="border-2 border-gray-300 text-md px-2 sm:px-2 py-4 sm:py-2 sm:text-sm"
-          >
-            <option value="">Sort by: Relevant</option>
-            <option value="price-asc">Sort by: Low to High</option>
-            <option value="price-desc">Sort by: High to Low</option>
-          </select>
-
+          <FilterSection
+            showFilter={showFilter}
+            setShowFilter={setShowFilter}
+            filter={filter}
+            handleFilterChange={handleFilterChange}
+          />
+          <SortDropdown handleSortChange={(e) => setSort(e.target.value)} />
         </div>
-
-        {/* Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
-          {currentProducts.map((product) => (
-            <div key={product.id} className="bg-white p-4 shadow-2xl">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover mb-4 p-0"
-              />
-              <h3 className="text-lg font-bold">{product.name}</h3>
-              <p className="text-gray-700">Ksh. {product.price.toFixed(2)}</p>
-              <p className="text-gray-600 text-sm">
-                {truncateDescription(product.description)}
-              </p>
-              <div className="flex items-center mt-2 space-x-2">
-                <div className="flex">{renderStars(product.rating)}</div>
-                <span className="text-sm text-gray-600">
-                  ({product.rating.toFixed(1)}) ({product.numberOfRatings})
-                </span>
-              </div>
-              <div className="flex justify-between mt-4">
-                <FaHeart className="text-red-500 cursor-pointer" />
-                <FaShareAlt className="text-blue-500 cursor-pointer" />
-              </div>
-            </div>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {sortedProducts
+            .slice(
+              (currentPage - 1) * productsPerPage,
+              currentPage * productsPerPage
+            )
+            .map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
         </div>
-
-        {/* Pagination */}
-        <div className="flex justify-center mt-6">
-          {[
-            ...Array(Math.ceil(sortedProducts.length / productsPerPage)).keys(),
-          ].map((num) => (
-            <button
-              key={num + 1}
-              className={`px-3 py-1 mx-1 ${
-                currentPage === num + 1
-                  ? "bg-red-600 text-white"
-                  : "bg-gray-200"
-              } rounded`}
-              onClick={() => setCurrentPage(num + 1)}
-            >
-              {num + 1}
-            </button>
-          ))}
-        </div>
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );
