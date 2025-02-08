@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -41,6 +42,12 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         <div className="relative cursor-pointer">
           <FaShoppingCart className="text-2xl text-gray-700" />
+          <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
+            0
+          </span>
+        </div>
+        <div className="relative cursor-pointer">
+          <FaHeart className="text-2xl text-gray-700" />
           <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
             0
           </span>
