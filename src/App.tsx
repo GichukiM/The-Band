@@ -7,6 +7,7 @@ function App() {
     <Router>
       <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <Navbar />
+      <div className="h-8"></div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<h1 className="text-center mt-10">Products Page</h1>} />
