@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Router>
+      <div className="w-full">
       <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <Navbar />
       <div className="h-8"></div>
@@ -14,6 +16,8 @@ function App() {
         <Route path="/about" element={<h1 className="text-center mt-10">About Us</h1>} />
         <Route path="/contact" element={<h1 className="text-center mt-10">Contact</h1>} />
       </Routes>
+      <Footer />
+      </div>
       </div>
     </Router>
   );
