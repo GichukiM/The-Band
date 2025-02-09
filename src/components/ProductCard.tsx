@@ -1,6 +1,7 @@
-import { FaHeart, FaShareAlt, FaStar, FaRegStar } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
 
 type ProductCardProps = {
   product: {
@@ -52,38 +53,63 @@ const truncateDescription = (description: string): string => {
   return words.slice(0, 5).join(" ") + (words.length > 5 ? "..." : "");
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart, addToWishList }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  addToCart,
+  addToWishList,
+}) => {
   return (
-    <div className="p-4 shadow-2xl">
+    <div className="border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <Link to={`/product/${product.id}`}>
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-48 object-cover mb-4 p-0"
-        />
-        <h3 className="text-lg font-bold">{product.name}</h3>
-        <p className="text-gray-700">Ksh. {product.price.toFixed(2)}</p>
-        <p className="text-gray-600 text-sm">
-          {truncateDescription(product.description)}
-        </p>
-        <div className="flex items-center mt-2 space-x-2">
-          <div className="flex">{renderStars(product.rating)}</div>
-          <span className="text-sm text-gray-600">
-            ({product.rating.toFixed(1)}) ({product.numberOfRatings})
-          </span>
+        {/* Product Image */}
+        <div className="h-56 w-full">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-full object-contain"
+          />
+        </div>
+
+        {/* Product Details */}
+        <div className="pt-6">
+          {/* Product Name */}
+          <h3 className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">
+            {product.name}
+          </h3>
+
+          {/* Product Price */}
+          <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">
+            Ksh. {product.price}
+          </p>
+
+          {/* Product Description */}
+          <p className="text-gray-600 text-sm mt-2">
+            {truncateDescription(product.description)}
+          </p>
+
+          {/* Product Rating */}
+          <div className="mt-2 flex items-center gap-2">
+            <div className="flex">{renderStars(product.rating)}</div>
+            <span className="text-sm text-gray-600">
+              ({product.rating.toFixed(1)}) ({product.numberOfRatings})
+            </span>
+          </div>
         </div>
       </Link>
-      <div className="flex justify-between mt-4">
-        <div className="flex space-x-4">
-          <div className="h-8 w-8 rounded-full p-2 bg-gray-100">
-            <FaHeart className="text-red-500 cursor-pointer" onClick={() => addToWishList(product)} />
-          </div>
-          <div className="h-8 w-8 rounded-full p-2 bg-gray-100">
-            <FaShoppingCart className="text-blue-950 cursor-pointer" onClick={() => addToCart(product)} />
-          </div>
+
+      {/* Price and Add to Cart Button */}
+      <div className="mt-4 flex items-center gap-6">
+        <div className="bg-red-600 items-center flex justify-center h-8 w-8 rounded-full">
+          <FaHeart
+            onClick={() => addToWishList(product)}
+            className="items-center justify-center text-white cursor-pointer"
+          />
         </div>
-        <div className="h-8 w-8 rounded-full p-2 bg-gray-100">
-          <FaShareAlt className="text-blue-500 cursor-pointer" />
+        <div className="bg-red-600 items-center flex justify-center h-8 w-8 rounded-full">
+          <FaShoppingCart
+            onClick={() => addToCart(product)}
+            className="items-center flex justify-center text-white cursor-pointer"
+          />
         </div>
       </div>
     </div>

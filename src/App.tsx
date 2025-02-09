@@ -3,12 +3,8 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 function App() {
   const [cart, setCart] = useState<any[]>([]);
@@ -34,8 +30,7 @@ function App() {
     });
   };
 
-  const companyInfo =
-    "Leading e-commerce platform providing top-quality products at the best prices.";
+  const companyInfo = "Leading e-commerce platform providing top-quality products at the best prices.";
 
   const contactInfo = {
     email: "support@example.com",
@@ -58,24 +53,12 @@ function App() {
           <div className="h-24"></div>
           <Routes>
             <Route path="/" element={<Home addToCart={addToCart} addToWishList={addToWishList} />} />
-            <Route
-              path="/products"
-              element={<h1 className="text-center mt-10">Products Page</h1>}
-            />
-            <Route
-              path="/about"
-              element={<h1 className="text-center mt-10">About Us</h1>}
-            />
-            <Route
-              path="/contact"
-              element={<h1 className="text-center mt-10">Contact</h1>}
-            />
+            <Route path="/products" element={<h1 className="text-center mt-10">Products Page</h1>} />
+            <Route path="/about" element={<h1 className="text-center mt-10">About Us</h1>} />
+            <Route path="/contact" element={<h1 className="text-center mt-10">Contact</h1>} />
+            <Route path="/product/:id" element={<ProductDetailPage addToCart={addToCart} addToWishList={addToWishList} />} />
           </Routes>
-          <Footer
-            companyInfo={companyInfo}
-            contactInfo={contactInfo}
-            socialLinks={socialLinks}
-          />
+          <Footer companyInfo={companyInfo} contactInfo={contactInfo} socialLinks={socialLinks} />
         </div>
       </div>
     </Router>

@@ -21,7 +21,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ companyInfo, contactInfo, socialLinks }) => {
   return (
-    <div className="w-full bg-gray-900 text-white">
+    <div className="absolute w-full bg-gray-900 text-white left-0 z-50">
       {/* Newsletter Subscription */}
       <div className="bg-gray-800 py-6 text-center mb-6">
         <h3 className="text-xl font-semibold">Subscribe to Our Newsletter</h3>
