@@ -7,10 +7,10 @@ import CartModal from "./CartModal";
 import WishListModal from "./WishListModal";
 
 interface NavbarProps {
-  cart: any[];
-  wishList: any[];
-  setCart: React.Dispatch<React.SetStateAction<any[]>>;
-  setWishList: React.Dispatch<React.SetStateAction<any[]>>;
+  cart: { id: number; name: string; price: number; quantity: number }[];
+  wishList: { id: number; name: string; price: number }[];
+  setCart: React.Dispatch<React.SetStateAction<{ id: number; name: string; price: number; quantity: number }[]>>;
+  setWishList: React.Dispatch<React.SetStateAction<{ id: number; name: string; price: number }[]>>;
 }
 
 const Navbar = ({ cart, setCart, wishList, setWishList }: NavbarProps) => {

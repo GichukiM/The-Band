@@ -14,8 +14,26 @@ type ProductCardProps = {
     description: string;
     numberOfRatings: number;
   };
-  addToCart: (product: any) => void;
-  addToWishList: (product: any) => void;
+  addToCart: (product: {
+    id: number;
+    name: string;
+    price: number;
+    rating: number;
+    category: string;
+    image: string;
+    description: string;
+    numberOfRatings: number;
+  }) => void;
+  addToWishList: (product: {
+    id: number;
+    name: string;
+    price: number;
+    rating: number;
+    category: string;
+    image: string;
+    description: string;
+    numberOfRatings: number;
+  }) => void;
 };
 
 // Helper function to render star ratings

@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import allProducts from "../context/Data";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 interface ProductDetailProps {
-  addToCart: (product: any) => void;
-  addToWishList: (product: any) => void;
+  addToCart: (product: { id: number; name: string; price: number; image: string; description: string; rating: number; numberOfRatings: number; category: string }) => void;
+  addToWishList: (product: { id: number; name: string; price: number; image: string; description: string; rating: number; numberOfRatings: number; category: string }) => void;
 }
 
 const renderStars = (rating: number) => {
@@ -135,6 +136,7 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
                 className="border border-gray-200 bg-white p-2 shadow-sm"
               >
                 {/* Product Image */}
+                <Link to={`/product/${recommendedProduct.id}`}>
                 <div className="h-56 w-full">
                   <img
                     src={recommendedProduct.image}
@@ -183,6 +185,7 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
                     </button>
                   </div>
                 </div>
+                </Link>
               </div>
             ))}
           </div>
