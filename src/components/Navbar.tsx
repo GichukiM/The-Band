@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import CartIcon from "./CartIcon";
-import WishIcon from "./WishIcon";
-import CartModal from "./CartModal";
-import WishListModal from "./WishListModal";
+import CartIcon from "./cart/CartIcon";
+import WishIcon from "./wish/WishIcon";
+import CartModal from "./cart/CartModal";
+import WishListModal from "./wish/WishListModal";
 
 interface NavbarProps {
   cart: { id: number; name: string; price: number; quantity: number }[];

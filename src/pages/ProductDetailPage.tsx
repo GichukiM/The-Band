@@ -1,8 +1,8 @@
-import ProductDetail from "../components/ProductDetail";
+import ProductDetail from "../components/product/ProductDetail";
 
 interface ProductDetailPageProps {
-  addToCart: (product: any) => void;
-  addToWishList: (product: any) => void;
+  addToCart: (product: { id: number; name: string; price: number }) => void;
+  addToWishList: (product: { id: number; name: string; price: number }) => void;
 }
 
 const ProductDetailPage = ({ addToCart, addToWishList }: ProductDetailPageProps) => {

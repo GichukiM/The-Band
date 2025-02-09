@@ -1,8 +1,15 @@
-import PBanner from '../components/PBanner'
-import ProductListing from '../components/ProductListing'
+import PBanner from '../components/HeroBanner'
+import ProductListing from '../components/product/ProductListing'
 import Testimonials from '../components/Testimonials'
 
-const Home = ({ addToCart, addToWishList }: { addToCart: (product: any) => void; addToWishList: (product: any) => void }) => {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
+
+const Home = ({ addToCart, addToWishList }: { addToCart: (product: Product) => void; addToWishList: (product: Product) => void }) => {
 
   const slides = [
     { id: 1, image: '/Hero1-TheBand.jpg', alt: 'Featured Product 1' },
