@@ -19,7 +19,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         onClick={() => setShowFilter(!showFilter)}
         className="my-2 text-xl flex items-center cursor-pointer gap-2"
       >
-        FILTERS
+        CATEGORIES
         <IoMdArrowDropdown className={`h-8 ${showFilter ? "rotate-180" : ""}`} />
       </p>
 

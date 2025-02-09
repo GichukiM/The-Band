@@ -14,6 +14,7 @@ type ProductCardProps = {
     numberOfRatings: number;
   };
   addToCart: (product: any) => void;
+  addToWishList: (product: any) => void;
 };
 
 // Helper function to render star ratings
@@ -51,7 +52,7 @@ const truncateDescription = (description: string): string => {
   return words.slice(0, 5).join(" ") + (words.length > 5 ? "..." : "");
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart, addToWishList }) => {
   return (
     <div className="p-4 shadow-2xl">
       <Link to={`/product/${product.id}`}>
@@ -75,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, addToCart }) => {
       <div className="flex justify-between mt-4">
         <div className="flex space-x-4">
           <div className="h-8 w-8 rounded-full p-2 bg-gray-100">
-            <FaHeart className="text-red-500 cursor-pointer" />
+            <FaHeart className="text-red-500 cursor-pointer" onClick={() => addToWishList(product)} />
           </div>
           <div className="h-8 w-8 rounded-full p-2 bg-gray-100">
             <FaShoppingCart className="text-blue-950 cursor-pointer" onClick={() => addToCart(product)} />

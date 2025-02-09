@@ -89,9 +89,10 @@ const allProducts = [
 
 interface ProductListingProps {
   addToCart: (product: any) => void;
+  addToWishList: (product: any) => void;
 }
 
-const ProductListing = ({ addToCart }: ProductListingProps) => {
+const ProductListing = ({ addToCart, addToWishList }: ProductListingProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState<string[]>([]);
@@ -139,7 +140,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
               currentPage * productsPerPage
             )
             .map((product) => (
-              <ProductCard key={product.id} product={product} addToCart={addToCart} />
+              <ProductCard key={product.id} product={product} addToCart={addToCart} addToWishList={addToWishList} />
             ))}
         </div>
         <Pagination

@@ -12,14 +12,25 @@ import {
 
 function App() {
   const [cart, setCart] = useState<any[]>([]);
+  const [wishList, setWishList] = useState<any[]>([]);
 
   const addToCart = (product: any) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
-        return prevCart; // Do not add duplicate
+        return prevCart;
       }
       return [...prevCart, product];
+    });
+  };
+
+  const addToWishList = (product: any) => {
+    setWishList((prevWishList) => {
+      const existingProduct = prevWishList.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevWishList;
+      }
+      return [...prevWishList, product];
     });
   };
 
@@ -43,11 +54,10 @@ function App() {
     <Router>
       <div className="w-full">
         <div className="px-3 sm:px-[4vw] md:px-[5vw] lg:px-[7vw]">
-          {/* Pass both cart and setCart to Navbar */}
-          <Navbar cart={cart} setCart={setCart} />
-          <div className="h-8"></div>
+          <Navbar cart={cart} setCart={setCart} wishList={wishList} setWishList={setWishList} />
+          <div className="h-24"></div>
           <Routes>
-            <Route path="/" element={<Home addToCart={addToCart} />} />
+            <Route path="/" element={<Home addToCart={addToCart} addToWishList={addToWishList} />} />
             <Route
               path="/products"
               element={<h1 className="text-center mt-10">Products Page</h1>}

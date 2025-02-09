@@ -2,7 +2,8 @@ import PBanner from '../components/PBanner'
 import ProductListing from '../components/ProductListing'
 import Testimonials from '../components/Testimonials'
 
-const Home = ({ addToCart }: { addToCart: (product: any) => void }) => {
+const Home = ({ addToCart, addToWishList }: { addToCart: (product: any) => void; addToWishList: (product: any) => void }) => {
+
   const slides = [
     { id: 1, image: '/Hero1-TheBand.jpg', alt: 'Featured Product 1' },
     { id: 2, image: '/Hero2-TheBand.jpg', alt: 'Featured Product 2' },
@@ -26,7 +27,7 @@ const Home = ({ addToCart }: { addToCart: (product: any) => void }) => {
   return (
     <>
       <PBanner slides={slides} />
-      <ProductListing addToCart={addToCart} />
+      <ProductListing addToCart={addToCart} addToWishList={addToWishList} />
       <Testimonials testimonials={testimonials} />
     </>
   );

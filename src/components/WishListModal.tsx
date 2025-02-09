@@ -1,27 +1,27 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-type CartModalProps = {
-  cartItems: any[];
-  removeFromCart: (id: number) => void;
-  closeModal: () => void;
+type wishListModalProps = {
+  wishListItems: any[];
+  removeFromWishList: (id: number) => void;
+  closeWishListModal: () => void;
 };
 
-const CartModal: React.FC<CartModalProps> = ({ cartItems, removeFromCart, closeModal }) => {
+const wishListModal: React.FC<wishListModalProps> = ({ wishListItems, removeFromWishList, closeWishListModal }) => {
   return (
     <div className="fixed top-0 right-0 bg-white w-3/4 sm:w-1/4 md:w-1/2 h-full shadow-lg p-4 z-50">
       <button
-        onClick={closeModal}
+        onClick={closeWishListModal}
         className="absolute top-4 cursor-pointer right-4 text-xl text-gray-700"
       >
         <FaTimes />
       </button>
-      <h2 className="text-xl font-bold mb-4">Your Cart</h2>
+      <h2 className="text-xl font-bold mb-4">Your Wish List</h2>
       <div className="space-y-4">
-        {cartItems.length === 0 ? (
-          <p className="text-center text-gray-600">Your cart is empty.</p>
+        {wishListItems.length === 0 ? (
+          <p className="text-center text-gray-600">Your Wish List is empty.</p>
         ) : (
-          cartItems.map((item) => (
+          wishListItems.map((item) => (
             <div key={item.id} className="flex items-center justify-between">
               <img
                 src={item.image}
@@ -33,7 +33,7 @@ const CartModal: React.FC<CartModalProps> = ({ cartItems, removeFromCart, closeM
                 <span className="text-sm text-gray-600">Ksh. {item.price}</span>
               </div>
               <button
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => removeFromWishList(item.id)}
                 className="text-red-600 text-lg cursor-pointer"
               >
                 <FaTimes />
@@ -46,4 +46,4 @@ const CartModal: React.FC<CartModalProps> = ({ cartItems, removeFromCart, closeM
   );
 };
 
-export default CartModal;
+export default wishListModal;
