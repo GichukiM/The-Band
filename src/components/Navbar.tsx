@@ -95,8 +95,8 @@ const Navbar = ({ cart, setCart, wishList, setWishList }: NavbarProps) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/products" className="hover:text-red-600 transition">
-                    Products
+                  <Link to="/admin" className="hover:text-red-600 transition">
+                    Admin
                   </Link>
                 </li>
                 <li>

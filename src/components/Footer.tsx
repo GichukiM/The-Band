@@ -21,18 +21,18 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ companyInfo, contactInfo, socialLinks }) => {
   return (
-    <div className="absolute w-full bg-red-800 text-white left-0 z-50">
+    <div className="absolute w-full bg-red-800 text-white left-0">
       {/* Newsletter Subscription */}
       <div className="bg-red-800 py-6 text-center mb-6">
         <h3 className="text-xl font-semibold">Subscribe to Our Newsletter</h3>
         <p className="text-sm text-gray-300">Get updates on new products and special offers.</p>
-        <div className="mt-4 flex-col gap-2 flex justify-center items-center">
+        <div className="mt-4 flex justify-center items-center">
           <input
             type="email"
             placeholder="Enter your email"
-            className="px-4 py-2 text-white border border-white rounded-md w-60"
+            className="px-4 py-2 text-white border border-white  w-60"
           />
-          <button className="bg-yellow-500 px-4 py-2 rounded-md hover:bg-yellow-600">
+          <button className="bg-gray-900 px-4 py-2 border cursor-pointer hover:bg-gray-600">
             Subscribe
           </button>
         </div>

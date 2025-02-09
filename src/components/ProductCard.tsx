@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   addToWishList,
 }) => {
   return (
-    <div className="border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <div className="border border-gray-200 bg-white p-2 shadow-sm">
       <Link to={`/product/${product.id}`}>
         {/* Product Image */}
         <div className="h-56 w-full">
@@ -73,12 +73,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {/* Product Details */}
         <div className="pt-6">
           {/* Product Name */}
-          <h3 className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">
+          <h3 className="text-lg font-semibold leading-tight text-gray-900 hover:underline">
             {product.name}
           </h3>
 
           {/* Product Price */}
-          <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">
+          <p className="text-2xl font-extrabold leading-tight text-gray-900">
             Ksh. {product.price}
           </p>
 

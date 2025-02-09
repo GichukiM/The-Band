@@ -132,7 +132,7 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
             {recommendedProducts.slice(0, 4).map((recommendedProduct) => (
               <div
                 key={recommendedProduct.id}
-                className="border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+                className="border border-gray-200 bg-white p-2 shadow-sm"
               >
                 {/* Product Image */}
                 <div className="h-56 w-full">
@@ -148,13 +148,13 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
                   {/* Product Name */}
                   <a
                     href="#"
-                    className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white"
+                    className="text-lg font-semibold leading-tight text-gray-900 hover:underline"
                   >
                     {recommendedProduct.name}
                   </a>
 
                   {/* Product Category */}
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                  <p className="mt-2 text-sm text-gray-500">
                     {recommendedProduct.category}
                   </p>
 
@@ -171,7 +171,7 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
 
                   {/* Price and Add to Cart Button */}
                   <div className="mt-4 flex items-center justify-between gap-4">
-                    <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">
+                    <p className="text-2xl font-extrabold leading-tight text-gray-900">
                       Ksh. {recommendedProduct.price}
                     </p>
 

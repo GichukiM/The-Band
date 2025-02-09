@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Analytics from "../components/admin/Analytics";
 
 const Admin = () => {
   const { isAuthenticated } = useAuth();
@@ -12,8 +13,7 @@ const Admin = () => {
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
-      <p>Welcome to the admin panel.</p>
+      <Analytics />
     </div>
   );
 };
