@@ -108,7 +108,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className="bg-red-600 items-center flex justify-center h-8 w-8 rounded-full">
           <FaShoppingCart
             onClick={() => addToCart(product)}
-            className="items-center flex justify-center text-white cursor-pointer"
+            className="items-center flex justify-center text-white cursor-pointer                                                                                                                                                                                                                                                                                                                                                                                                                                                  "
           />
         </div>
       </div>

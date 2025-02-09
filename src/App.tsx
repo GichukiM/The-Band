@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Admin from "./pages/Admin";
 
 function App() {
   const [cart, setCart] = useState<any[]>([]);
@@ -53,7 +56,8 @@ function App() {
           <div className="h-24"></div>
           <Routes>
             <Route path="/" element={<Home addToCart={addToCart} addToWishList={addToWishList} />} />
-            <Route path="/products" element={<h1 className="text-center mt-10">Products Page</h1>} />
+            <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
             <Route path="/about" element={<h1 className="text-center mt-10">About Us</h1>} />
             <Route path="/contact" element={<h1 className="text-center mt-10">Contact</h1>} />
             <Route path="/product/:id" element={<ProductDetailPage addToCart={addToCart} addToWishList={addToWishList} />} />
