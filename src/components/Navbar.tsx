@@ -3,84 +3,146 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import WishIcon from "./WishIcon";
+import CartModal from "./CartModal";
 
-const Navbar = () => {
+interface NavbarProps {
+  cart: any[];
+  setCart: React.Dispatch<React.SetStateAction<any[]>>;
+}
+
+const Navbar = ({ cart, setCart }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const removeFromCart = (id: number) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
+  const openCartModal = () => {
+    setIsModalOpen(true); // Opens the cart modal
+  };
 
   // Disable scrolling when menu is open
   useEffect(() => {
-    if (menuOpen) {
+    if (menuOpen || isModalOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [menuOpen]);
+  }, [menuOpen, isModalOpen]);
 
   return (
-    <nav className="bg-white py-4 flex justify-between items-center">
-      {/* Logo */}
-      <div className="text-2xl font-bold text-red-600">
-        <Link to="/">The Band Store</Link>
-      </div>
+    <>
+      <nav className="bg-white py-4 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-red-600">
+          <Link to="/">The Band Store</Link>
+        </div>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex gap-6 text-lg">
-        <li>
-          <Link to="/" className="hover:text-red-600 transition">Home</Link>
-        </li>
-        <li>
-          <Link to="/products" className="hover:text-red-600 transition">Products</Link>
-        </li>
-        <li>
-          <Link to="/about" className="hover:text-red-600 transition">About</Link>
-        </li>
-        <li>
-          <Link to="/contact" className="hover:text-red-600 transition">Contact</Link>
-        </li>
-      </ul>
-
-      {/* Cart Icon & Mobile Menu Button */}
-      <div className="flex items-center gap-4">
-        <CartIcon />
-        <WishIcon />
-
-        {/* Mobile Menu Button */}
-        <button onClick={() => setMenuOpen(true)} className="md:hidden">
-          <FaBars className="text-2xl text-gray-700" />
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-3/4 bg-white shadow-lg transform ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
-      >
-        {/* Close Button */}
-        <button
-          onClick={() => setMenuOpen(false)}
-          className="absolute top-5 right-5 text-2xl text-gray-700"
-        >
-          <FaTimes />
-        </button>
-
-        {/* Mobile Nav Links */}
-        <ul className="flex flex-col items-start gap-6 text-lg p-8 mt-16">
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-6 text-lg">
           <li>
-            <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-red-600 transition">Home</Link>
+            <Link to="/" className="hover:text-red-600 transition">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/products" onClick={() => setMenuOpen(false)} className="hover:text-red-600 transition">Products</Link>
+            <Link to="/products" className="hover:text-red-600 transition">
+              Products
+            </Link>
           </li>
           <li>
-            <Link to="/about" onClick={() => setMenuOpen(false)} className="hover:text-red-600 transition">About</Link>
+            <Link to="/about" className="hover:text-red-600 transition">
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/contact" onClick={() => setMenuOpen(false)} className="hover:text-red-600 transition">Contact</Link>
+            <Link to="/contact" className="hover:text-red-600 transition">
+              Contact
+            </Link>
           </li>
         </ul>
-      </div>
-    </nav>
+
+        {/* Cart Icon & Mobile Menu Button */}
+        <div className="flex items-center gap-4">
+          <CartIcon cartCount={cart.length} onClick={openCartModal}/>
+          <WishIcon />
+
+          {/* Mobile Menu Button */}
+          <button onClick={() => setMenuOpen(true)} className="md:hidden">
+            <FaBars className="text-2xl text-gray-700" />
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`fixed top-0 right-0 h-full w-3/4 bg-white shadow-lg transform ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          } transition-transform duration-300 ease-in-out z-50`}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-5 right-5 text-2xl text-gray-700"
+          >
+            <FaTimes />
+          </button>
+
+          {/* Mobile Nav Links */}
+          <ul className="flex flex-col items-start gap-6 text-lg p-8 mt-16">
+            <li>
+              <Link
+                to="/"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-red-600 transition"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/products"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-red-600 transition"
+              >
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-red-600 transition"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-red-600 transition"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Cart Modal */}
+        {isModalOpen && (
+          <CartModal
+            cartItems={cart}
+            removeFromCart={removeFromCart}
+            closeModal={toggleModal}
+          />
+        )}
+      </nav>
+    </>
   );
 };
 

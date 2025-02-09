@@ -87,7 +87,11 @@ const allProducts = [
   },
 ];
 
-const ProductListing = () => {
+interface ProductListingProps {
+  addToCart: (product: any) => void;
+}
+
+const ProductListing = ({ addToCart }: ProductListingProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState<string[]>([]);
@@ -105,6 +109,7 @@ const ProductListing = () => {
   const filteredProducts = allProducts.filter((p) =>
     filter.length ? filter.includes(p.category) : true
   );
+
   const sortedProducts = [...filteredProducts].sort((a, b) =>
     sort === "price-asc"
       ? a.price - b.price
@@ -112,6 +117,7 @@ const ProductListing = () => {
       ? b.price - a.price
       : 0
   );
+
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
   return (
@@ -133,7 +139,7 @@ const ProductListing = () => {
               currentPage * productsPerPage
             )
             .map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))}
         </div>
         <Pagination

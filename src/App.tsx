@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
@@ -10,7 +11,18 @@ import {
 } from "react-icons/fa";
 
 function App() {
-  
+  const [cart, setCart] = useState<any[]>([]);
+
+  const addToCart = (product: any) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart; // Do not add duplicate
+      }
+      return [...prevCart, product];
+    });
+  };
+
   const companyInfo =
     "Leading e-commerce platform providing top-quality products at the best prices.";
 
@@ -31,10 +43,11 @@ function App() {
     <Router>
       <div className="w-full">
         <div className="px-3 sm:px-[4vw] md:px-[5vw] lg:px-[7vw]">
-          <Navbar />
+          {/* Pass both cart and setCart to Navbar */}
+          <Navbar cart={cart} setCart={setCart} />
           <div className="h-8"></div>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home addToCart={addToCart} />} />
             <Route
               path="/products"
               element={<h1 className="text-center mt-10">Products Page</h1>}
