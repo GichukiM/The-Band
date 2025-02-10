@@ -1,14 +1,28 @@
+import React, { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
-  { month: "Jan", sales: 4000 },
-  { month: "Feb", sales: 3000 },
-  { month: "Mar", sales: 5000 },
-  { month: "Apr", sales: 7000 },
-  { month: "May", sales: 6000 },
-];
-
 const SalesChart = () => {
+  interface SalesData {
+    month: string;
+    sales: number;
+  }
+
+  const [data, setData] = useState<SalesData[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/sales");
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching sales data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="bg-white p-4 shadow rounded-lg">
       <h3 className="text-lg font-semibold mb-3">Sales Performance</h3>

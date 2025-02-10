@@ -172,6 +172,7 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
                       className="h-full w-full object-contain"
                     />
                   </div>
+                  </Link>
                   <div className="pt-6">
                     <p className="text-lg font-semibold leading-tight text-gray-900 hover:underline">
                       {recommendedProduct.name}
@@ -200,7 +201,7 @@ const ProductDetail = ({ addToCart, addToWishList }: ProductDetailProps) => {
                       </button>
                     </div>
                   </div>
-                </Link>
+                
               </div>
             ))}
           </div>

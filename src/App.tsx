@@ -4,7 +4,12 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Admin from "./pages/Admin";
@@ -13,7 +18,7 @@ function App() {
   const [cart, setCart] = useState<any[]>([]);
   const [wishList, setWishList] = useState<any[]>([]);
 
-  const addToCart = (product: any) => {
+  const addToCart = (product: Product) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
@@ -23,9 +28,18 @@ function App() {
     });
   };
 
-  const addToWishList = (product: any) => {
+  interface Product {
+    id: number;
+    name: string;
+    price: number;
+    // Add other product properties here
+  }
+
+  const addToWishList = (product: Product) => {
     setWishList((prevWishList) => {
-      const existingProduct = prevWishList.find((item) => item.id === product.id);
+      const existingProduct = prevWishList.find(
+        (item) => item.id === product.id
+      );
       if (existingProduct) {
         return prevWishList;
       }
@@ -33,7 +47,8 @@ function App() {
     });
   };
 
-  const companyInfo = "Leading e-commerce platform providing top-quality products at the best prices.";
+  const companyInfo =
+    "Leading e-commerce platform providing top-quality products at the best prices.";
 
   const contactInfo = {
     email: "support@example.com",
@@ -52,17 +67,52 @@ function App() {
     <Router>
       <div className="w-full">
         <div className="px-3 sm:px-[4vw] md:px-[5vw] lg:px-[7vw]">
-          <Navbar cart={cart} setCart={setCart} wishList={wishList} setWishList={setWishList} />
+          <Navbar
+            cart={cart}
+            setCart={setCart}
+            wishList={wishList}
+            setWishList={setWishList}
+          />
           <div className="h-24"></div>
           <Routes>
-            <Route path="/" element={<Home addToCart={addToCart} addToWishList={addToWishList} />} />
+            <Route
+              path="/"
+              element={
+                <Home addToCart={addToCart} addToWishList={addToWishList} />
+              }
+            />
             <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-            <Route path="/about" element={<h1 className="text-center mt-10">About Us</h1>} />
-            <Route path="/contact" element={<h1 className="text-center mt-10">Contact</h1>} />
-            <Route path="/product/:id" element={<ProductDetailPage addToCart={addToCart} addToWishList={addToWishList} />} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/about"
+              element={<h1 className="text-center mt-10">About Us</h1>}
+            />
+            <Route
+              path="/contact"
+              element={<h1 className="text-center mt-10">Contact</h1>}
+            />
+            <Route
+              path="/product/:id"
+              element={
+                <ProductDetailPage
+                  addToCart={addToCart}
+                  addToWishList={addToWishList}
+                />
+              }
+            />
           </Routes>
-          <Footer companyInfo={companyInfo} contactInfo={contactInfo} socialLinks={socialLinks} />
+          <Footer
+            companyInfo={companyInfo}
+            contactInfo={contactInfo}
+            socialLinks={socialLinks}
+          />
         </div>
       </div>
     </Router>

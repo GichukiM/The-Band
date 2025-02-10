@@ -186,5 +186,25 @@
       "review": "Best purchase I've made this year!",
       "rating": 5
     }
+  ],
+  "product-sales": [
+    { "product": "Smartphone S25", "sales": 700 },
+    { "product": "Laptop Pro", "sales": 450 },
+    { "product": "Wireless Headphones", "sales": 350 },
+    { "product": "Men's T-Shirt", "sales": 500 },
+    { "product": "Women's Dress", "sales": 300 },
+    { "product": "Leather Wallet", "sales": 400 },
+    { "product": "Smart Watch", "sales": 600 },
+    { "product": "Sunglasses", "sales": 250 },
+    { "product": "Smartphone @25", "sales": 750 },
+    { "product": "Floral Dress", "sales": 200 },
+    { "product": "Test Prod1", "sales": 100 }
+  ],
+    "sales": [
+    { "month": "Jan", "sales": 4000 },
+    { "month": "Feb", "sales": 3000 },
+    { "month": "Mar", "sales": 5000 },
+    { "month": "Apr", "sales": 7000 },
+    { "month": "May", "sales": 6000 }
   ]
 }

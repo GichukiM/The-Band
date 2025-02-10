@@ -1,13 +1,28 @@
+import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
-  { product: "T-Shirts", sales: 500 },
-  { product: "Headphones", sales: 700 },
-  { product: "Sunglasses", sales: 300 },
-  { product: "Smartphones", sales: 900 },
-];
-
 const ProductComparison = () => {
+  interface ProductSalesData {
+    product: string;
+    sales: number;
+  }
+
+  const [data, setData] = useState<ProductSalesData[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/product-sales");
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching product sales data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="bg-white p-4 shadow rounded-lg">
       <h3 className="text-lg font-semibold mb-3">Product Comparison</h3>

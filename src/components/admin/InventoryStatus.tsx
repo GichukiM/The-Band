@@ -1,25 +1,46 @@
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
-
-const data = [
-  { name: "In Stock", value: 75 },
-  { name: "Out of Stock", value: 25 },
-];
-
-const COLORS = ["#00C49F", "#FF8042"];
+import { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import axios from "axios"; 
 
 const InventoryStatus = () => {
+  interface Product {
+    name: string;
+    stock: number;
+  }
+
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/products");
+        const products = response.data;
+        setProducts(products);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const data = products.map(product => ({
+    name: product.name,
+    stock: product.stock,
+  }));
+
   return (
     <div className="bg-white p-4 shadow rounded-lg">
-      <h3 className="text-lg font-semibold mb-3">Inventory Status</h3>
+      <h3 className="text-lg font-semibold mb-3">Product Inventory Status</h3>
       <ResponsiveContainer width="100%" height={250}>
-        <PieChart>
-          <Pie data={data} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" dataKey="value">
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index]} />
-            ))}
-          </Pie>
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
           <Tooltip />
-        </PieChart>
+          <Legend />
+          <Bar dataKey="stock" fill="#00C49F" />
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
