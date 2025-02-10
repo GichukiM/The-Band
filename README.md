@@ -53,6 +53,12 @@ Admin users can view, create, edit, and delete products.
 
 Secure login and authentication are implemented for the admin panel.
 
+To log in as an admin, use the following credentials:
+```
+    Email: admin@example.com
+    Password: password123
+```
+
 Sales charts, product comparison graphs, and inventory status are available in the analytics section.
 
 ### 3. Cart Functionality
@@ -77,5 +83,8 @@ The app uses the Faker API to fetch product data. Mock data is integrated for se
 
 Error handling and loading states are implemented to improve user experience.
 
-Conclusion
-This application demonstrates proficiency in building ReactJS applications with modern state management practices (React Context API), API integration, form validation, and basic CRUD operations for product management. The design is responsive and scalable, with a focus on user-friendly interactions and efficient data handling.
+### Conclusion
+
+This application demonstrates proficiency in building ReactJS applications with modern state management practices (React Context API), API integration, form validation, and basic CRUD operations for product management. 
+
+The design is responsive and scalable, with a focus on user-friendly interactions and efficient data handling.
