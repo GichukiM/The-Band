@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
+# Frontend Interview Assignment - ReactJS Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setup Instructions
 
-Currently, two official plugins are available:
+### 1. Clone the Repository
+To get started, clone the repository:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+git clone https://github.com/your-repository-name.git
+```
+### 2. Install Dependencies
+Navigate to the project directory and install the dependencies:
+```
+bash
+Copy
+Edit
+cd your-repository-name
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 3. Start the Development Server
+Run the development server:
 ```
+bash
+Copy
+Edit
+npm run dev
+Open your browser and navigate to http://localhost:3000 to view the application.
+```
+### Functional Features
+## 1. Landing Page
+The landing page displays a grid/list of products with an option to filter and sort products.
+A promotional banner highlights featured products and current offers.
+Customer reviews and ratings for each product are displayed in the testimonials section.
+## 2. Product Management
+Admin users can view, create, edit, and delete products.
+Secure login and authentication are implemented for the admin panel.
+Sales charts, product comparison graphs, and inventory status are available in the analytics section.
+## 3. Cart Functionality
+Users can add products to their cart and view the cart’s item count.
+The cart icon updates visually when items are added or removed.
+Users can remove items from the cart, and the cart count is updated dynamically.
+## 4. API Integration
+The app uses the Faker API to fetch product data. Mock data is integrated for seamless product listing, which simulates an actual e-commerce platform.
+Error handling and loading states are implemented to improve user experience.
+Future Improvements
+Implement payment gateway integration for real transactions.
+Add user authentication for regular users (not just admin).
+Integrate real-time data updates for product inventory and sales.
+Conclusion
+This application demonstrates proficiency in building ReactJS applications with modern state management practices (React Context API), API integration, form validation, and basic CRUD operations for product management. The design is responsive and scalable, with a focus on user-friendly interactions and efficient data handling.

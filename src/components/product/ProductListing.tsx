@@ -1,21 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
-import FilterSection from "./Filters";
-import SortDropdown from "./Sorting";
-import Pagination from "./Pagination";
-import  allProducts  from "../context/Data";
+import FilterSection from "../filters/Filters";
+import SortDropdown from "../filters/Sorting";
+import Pagination from "../filters/Pagination";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  rating: number;
+  category: string;
+  image: string;
+  description: string;
+  numberOfRatings: number;
+}
 
 interface ProductListingProps {
-  addToCart: (product: any) => void;
-  addToWishList: (product: any) => void;
+  addToCart: (product: { id: number; name: string; price: number; category: string }) => void;
+  addToWishList: (product: { id: number; name: string; price: number; category: string }) => void;
 }
 
 const ProductListing = ({ addToCart, addToWishList }: ProductListingProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState<string[]>([]);
   const [sort, setSort] = useState("");
   const productsPerPage = 8;
+
+  // Fetch products from the API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const handleFilterChange = (category: string) => {
     setFilter((prev) =>
@@ -25,7 +50,7 @@ const ProductListing = ({ addToCart, addToWishList }: ProductListingProps) => {
     );
   };
 
-  const filteredProducts = allProducts.filter((p) =>
+  const filteredProducts = products.filter((p) =>
     filter.length ? filter.includes(p.category) : true
   );
 

@@ -7,8 +7,8 @@ import CartModal from "./cart/CartModal";
 import WishListModal from "./wish/WishListModal";
 
 interface NavbarProps {
-  cart: { id: number; name: string; price: number; quantity: number }[];
-  wishList: { id: number; name: string; price: number }[];
+  cart: { id: number; name: string; price: number; quantity: number; image: string }[];
+  wishList: { id: number; name: string; price: number; image: string }[];
   setCart: React.Dispatch<React.SetStateAction<{ id: number; name: string; price: number; quantity: number }[]>>;
   setWishList: React.Dispatch<React.SetStateAction<{ id: number; name: string; price: number }[]>>;
 }
@@ -99,16 +99,6 @@ const Navbar = ({ cart, setCart, wishList, setWishList }: NavbarProps) => {
                     Admin
                   </Link>
                 </li>
-                <li>
-                  <Link to="/about" className="hover:text-red-600 transition">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-red-600 transition">
-                    Contact
-                  </Link>
-                </li>
               </ul>
 
               {/* Cart Icon & Mobile Menu Button */}
@@ -153,29 +143,11 @@ const Navbar = ({ cart, setCart, wishList, setWishList }: NavbarProps) => {
           </li>
           <li>
             <Link
-              to="/products"
+              to="/admin"
               onClick={() => setMenuOpen(false)}
               className="hover:text-red-600 transition"
             >
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/about"
-              onClick={() => setMenuOpen(false)}
-              className="hover:text-red-600 transition"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="hover:text-red-600 transition"
-            >
-              Contact
+              Admin
             </Link>
           </li>
         </ul>

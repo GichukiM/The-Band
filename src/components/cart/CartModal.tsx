@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 type CartModalProps = {
-  cartItems: any[];
+  cartItems: { id: number; name: string; price: number; image: string }[];
   removeFromCart: (id: number) => void;
   closeModal: () => void;
 };

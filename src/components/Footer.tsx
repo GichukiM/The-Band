@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ companyInfo, contactInfo, socialLinks }
 
       {/* Bottom Section */}
       <div className="bg-gray-800 text-center py-4 text-sm text-gray-400">
-        <p>© {new Date().getFullYear()} YourCompany. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} TheBandStore. All rights reserved.</p>
         <p>
           Designed by <span className="text-white">Gichuki Muchiri</span>
         </p>

@@ -109,7 +109,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="mt-2 flex items-center gap-2">
             <div className="flex">{renderStars(product.rating)}</div>
             <span className="text-sm text-gray-600">
-              ({product.rating.toFixed(1)}) ({product.numberOfRatings})
+              ({product.rating}) ({product.numberOfRatings})
             </span>
           </div>
         </div>

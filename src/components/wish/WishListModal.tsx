@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 type wishListModalProps = {
-  wishListItems: any[];
+  wishListItems: { id: number; name: string; image: string; price: number }[];
   removeFromWishList: (id: number) => void;
   closeWishListModal: () => void;
 };

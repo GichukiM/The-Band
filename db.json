@@ -1,0 +1,190 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Smartphone S25",
+      "price": 799.99,
+      "stock": 13,
+      "rating": 4.7,
+      "category": "Electronics",
+      "description": "A high-end smartphone with advanced features.",
+      "image": "/TheBand-SmartPhone.jpg",
+      "numberOfRatings": 7
+    },
+    {
+      "id": "2",
+      "name": "Laptop Pro",
+      "price": 1299.99,
+      "stock": 5,
+      "rating": 4.7,
+      "category": "Electronics",
+      "image": "/TheBand-Laptop.jpg",
+      "description": "Powerful laptop for professionals and gamers.",
+      "numberOfRatings": 15
+    },
+    {
+      "id": "3",
+      "name": "Wireless Headphones",
+      "price": 199.99,
+      "stock": 5,
+      "rating": 4.3,
+      "category": "Electronics",
+      "image": "/TheBand-HeadPhones.jpg",
+      "description": "Noise-cancelling headphones with long battery life.",
+      "numberOfRatings": 30
+    },
+    {
+      "id": "4",
+      "name": "Men's T-Shirt",
+      "price": 29.99,
+      "stock": 5,
+      "rating": 4.5,
+      "category": "Clothing",
+      "description": "Comfortable and stylish t-shirt for men.",
+      "image": "/TheBand-MenTshirt.jpg",
+      "numberOfRatings": 25
+    },
+    {
+      "id": "5",
+      "name": "Women's Dress",
+      "price": 59.99,
+      "stock": 5,
+      "rating": 4.2,
+      "category": "Clothing",
+      "image": "/TheBand-WomenDress.jpg",
+      "description": "Elegant dress for women, perfect for any occasion.",
+      "numberOfRatings": 18
+    },
+    {
+      "id": "6",
+      "name": "Leather Wallet",
+      "price": 49.99,
+      "stock": 5,
+      "rating": 4.4,
+      "category": "Accessories",
+      "image": "/TheBand-Wallet.jpg",
+      "description": "Premium leather wallet with multiple compartments.",
+      "numberOfRatings": 22
+    },
+    {
+      "id": "7",
+      "name": "Smart Watch",
+      "price": 249.99,
+      "stock": 5,
+      "rating": 4.6,
+      "category": "Electronics",
+      "image": "/TheBand-SmartWatch.jpg",
+      "description": "Smartwatch with fitness tracking and notifications.",
+      "numberOfRatings": 28
+    },
+    {
+      "id": "8",
+      "name": "Sunglasses",
+      "price": 99.99,
+      "stock": 7,
+      "rating": 4.1,
+      "category": "Accessories",
+      "image": "/TheBand-Sunglasses.jpg",
+      "description": "Stylish sunglasses with UV protection.",
+      "numberOfRatings": 12
+    },
+    {
+      "id": "9",
+      "name": "Smartphone @25",
+      "price": 799.99,
+      "stock": 7,
+      "rating": 4.5,
+      "category": "Electronics",
+      "image": "/TheBand-SmartPhone.jpg",
+      "description": "A high-end smartphone with advanced features.",
+      "numberOfRatings": 20
+    },
+    {
+      "id": "10",
+      "name": "Floral Dress",
+      "price": 59.99,
+      "stock": 5,
+      "rating": 4.2,
+      "category": "Clothing",
+      "image": "/TheBand-WomenDress.jpg",
+      "description": "Elegant Floral dress for women, perfect for any occasion.",
+      "numberOfRatings": 18
+    },
+    {
+      "id": "9658",
+      "name": "Test Prod1",
+      "price": "1200",
+      "stock": "7",
+      "description": "Test prod desc ishike iwake",
+      "image": "https://images.pexels.com/photos/30481070/pexels-photo-30481070/free-photo-of-soaring-seagull-against-a-clear-blue-sky.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "numberOfRatings": "3",
+      "rating": "4",
+      "category": "Test Category"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "image": "/customer1.jpg",
+      "review": "This product is amazing! It exceeded my expectations.",
+      "rating": 5
+    },
+    {
+      "id": "2",
+      "nae:": "ane Smith'",
+      "image:": "/customer2.jpg',",
+      "view": "Goodquality, fast delivery, and great customer service.",
+      "rating": "5"
+    },
+    {
+      "id": "3",
+      "name": "Mark Lee",
+      "image": "/customer3.jpg",
+      "review": "A great product at an even better price.",
+      "rating": 5
+    },
+    {
+      "id": "4",
+      "name": "Alice Johnson",
+      "image": "/customer4.jpg",
+      "review": "Absolutely love it! Will definitely buy again.",
+      "rating": 5
+    },
+    {
+      "id": "5",
+      "name": "Chris Brown",
+      "image": "/customer2.jpg",
+      "review": "Satisfied with the purchase, but delivery took a while.",
+      "rating": 3.6
+    },
+    {
+      "id": "6",
+      "name": "Sophia Wilson",
+      "image": "/customer3.jpg",
+      "review": "Superb customer support and quality product.",
+      "rating": 4
+    },
+    {
+      "id": "7",
+      "name": "Daniel Martinez",
+      "image": "/customer1.jpg",
+      "review": "Highly recommend! 100% worth the price.",
+      "rating": 5
+    },
+    {
+      "id": "8",
+      "name": "Olivia Taylor",
+      "image": "/customer4.jpg",
+      "review": "Good, but I wish they had more color options.",
+      "rating": 4
+    },
+    {
+      "id": "9",
+      "name": "Michael Clark",
+      "image": "/customer2.jpg",
+      "review": "Best purchase I've made this year!",
+      "rating": 5
+    }
+  ]
+}
