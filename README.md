@@ -13,9 +13,7 @@ git clone https://github.com/GichukiM/The-Band
 Navigate to the project directory and install the dependencies:
 
 ```
-bash
-Copy
-Edit
+
 cd The-Band
 npm install
 
@@ -24,9 +22,7 @@ npm install
 To start the server, use the following command:
 
 ```
-bash
-Copy
-Edit
+
 npm run start:server
 
 ```
@@ -35,9 +31,7 @@ npm run start:server
 Run the development server:
 
 ```
-bash
-Copy
-Edit
+
 npm run dev
 
 ```
